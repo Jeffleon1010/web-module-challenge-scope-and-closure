@@ -64,8 +64,9 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/){
-    /*Code Here*/
+function inning(){
+  const num = Math.floor(Math.random() * 3);
+  return num;
 }
 
 
@@ -83,8 +84,17 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(/*Code Here*/){
-  /*Code Here*/
+function finalScore(inningCB, num){
+  let homeScore = 0;
+  let awayScore = 0;
+  for (let i = 0; i < num; i++) {
+    homeScore = homeScore + inningCB();
+    awayScore = awayScore + inningCB();
+  }
+  return {
+    Home: homeScore,
+    Away: awayScore
+  };
 }
 
 
@@ -101,8 +111,11 @@ For example: invoking getInningScore(inning) might return this object:
   */
 
 
-function getInningScore(/*Your Code Here */) {
-  /*Your Code Here */
+function getInningScore(inningCB) {
+  return {
+    Home: inningCB(),
+    Away: inningCB()
+  };
 
 }
 
